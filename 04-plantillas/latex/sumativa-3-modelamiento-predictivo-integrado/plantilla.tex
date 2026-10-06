@@ -1,0 +1,178 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===================== Codificación y fuentes =====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ===================== Página y utilidades ========================
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+% ===================== Etiquetas en español (sin babel) ===========
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\refname}{Bibliografía}
+
+% ===================== Escala de grises (sin color) ================
+\definecolor{negro}{RGB}{0,0,0}
+\definecolor{gris}{RGB}{90,90,90}
+\definecolor{grisclaro}{RGB}{150,150,150}
+\definecolor{fillgray}{RGB}{175,175,175}
+
+% ===================== Hipervínculos (negro) =======================
+\hypersetup{colorlinks=true, linkcolor=negro, urlcolor=negro, citecolor=negro}
+
+% ===================== Estilo de títulos ===========================
+\titleformat{\section}{\large\bfseries\color{negro}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{negro}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.4em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.3em}
+
+% ===================== Pie de página ===============================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\footnotesize\color{gris}Magíster en Ciencia de Datos e Inteligencia Artificial}
+\fancyfoot[R]{\footnotesize\color{gris}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ===================== Comandos del docente ========================
+\newcommand{\guia}[1]{{\small\itshape\color{gris}#1}\par\vspace{0.15em}}
+\newcommand{\resp}{{\footnotesize\itshape\color{fillgray}[\,Desarrollen aquí\,]}\par\vspace{1.1em}}
+
+% Caja de información de la evaluación (escala de grises):
+\newtcolorbox{infobox}[1][Información de la evaluación]{colback=black!3,colframe=negro,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% Caja de conexión con evaluaciones previas (gris, sin color):
+\newtcolorbox{conexionbox}[1][Conexión con evaluaciones anteriores]{colback=black!6,colframe=gris,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% ===================== Datos del grupo (COMPLETAR) ==================
+\newcommand{\proyTitulo}{«título del proyecto»}
+\newcommand{\proyIntegrantes}{«nombres completos (3--4 integrantes)»}
+\newcommand{\proyDataset}{«dataset seleccionado»}
+\newcommand{\proyDocente}{«nombre del docente»}
+\newcommand{\proyFecha}{«dd/mm/aaaa»}
+\newcommand{\proyRepo}{\url{https://github.com/usuario/repositorio}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\thispagestyle{empty}
+\begin{center}
+\vspace*{1.0cm}
+\includegraphics[height=4.4cm]{logo_unab.png}\\[1.3cm]
+
+{\footnotesize\color{gris}\MakeUppercase{Magíster en Ciencia de Datos e Inteligencia Artificial}}\\[0.15cm]
+{\footnotesize\color{grisclaro}MCDI501: Estadística Computacional para la Toma de Decisiones}\\[2.0cm]
+
+{\Large\bfseries\color{negro} Evaluación Sumativa 3}\\[0.45cm]
+{\large\color{negro} Modelamiento Predictivo Integrado}\\[1.0cm]
+
+{\small\itshape\color{gris} Informe técnico grupal \textperiodcentered\ 60\,\%}
+\end{center}
+
+\vspace{1.6cm}
+
+\begin{flushleft}
+\setlength{\extrarowheight}{5pt}
+\begin{tabular}{@{}>{\bfseries\color{negro}}l l@{}}
+Título del proyecto: & \proyTitulo \\
+Integrantes:         & \proyIntegrantes \\
+Dataset:             & \proyDataset \\
+Docente:             & \proyDocente \\
+Fecha:               & \proyFecha \\
+Repositorio GitHub:  & \proyRepo \\
+\end{tabular}
+\end{flushleft}
+
+\clearpage
+\pagenumbering{arabic}
+\begin{infobox}
+\textbf{Fase del proyecto:} Fase 4: Presentación y comunicación\\
+\textbf{Modalidad:} Grupal\qquad\textbf{Ponderación:} 60\,\% de la nota final\\
+\textbf{Entregables:} Informe final PDF (máx.\ 10 págs.)\ \textperiodcentered\ Notebook maestro \texttt{.ipynb}\ \textperiodcentered\ Presentación (video o en vivo)\ \textperiodcentered\ Repositorio GitHub completo\\
+\textbf{Resultados de aprendizaje:} RA1, RA2, RA3 (esta evaluación los integra).\\
+\textbf{Prerrequisitos:} Sumativas 1 y 2 completadas (usarán sus resultados).
+\end{infobox}
+\begin{conexionbox}
+Esta evaluación \textbf{no es independiente}: todas las decisiones metodológicas (manejo de datos faltantes, selección de variables, validación de modelos, evaluación de desempeño y análisis de robustez) deben fundamentarse directamente en los hallazgos de S1 y S2. \textbf{Si no se evidencia el uso efectivo de dichos resultados, la evaluación no podrá alcanzar la calificación máxima.} Debe observarse claramente la progresión S1 $\to$ S2 $\to$ S3.
+\end{conexionbox}
+
+\vspace{0.5em}
+\tableofcontents
+\newpage
+
+\section{Manejo inteligente de datos faltantes}
+\guia{(21 pts) Parte 1.}
+
+\subsection{Referencia al análisis de faltantes de S1}
+\guia{Resuman qué variables presentan faltantes, su porcentaje por variable y el patrón identificado (MCAR, MAR o MNAR), referenciando directamente los resultados de S1 (no repitan el análisis).}
+\resp
+
+\subsection{Imputación mediante regresión lineal múltiple}
+\guia{Para cada variable numérica con faltantes: seleccionen 3 a 5 predictores usando la matriz de correlaciones de S1, priorizando las validadas como estables en S2; ajusten el modelo con observaciones completas, verifiquen supuestos, evalúen su desempeño e imputen documentando cuántos valores fueron imputados.}
+\resp
+
+\subsection{Comparación de estrategias de imputación}
+\guia{Comparen eliminación, imputación simple e imputación por regresión: tamaño muestral, distribución de variables y preservación de correlaciones de S1. Justifiquen la estrategia elegida para el resto del desarrollo.}
+\resp
+
+\section{Clasificación mediante regresión logística}
+\guia{(30 pts para la construcción de modelos + 30 pts para bootstrap, ver más abajo) Parte 2.}
+
+\subsection{Preparación de datos informada por S1}
+\guia{Dataset con la estrategia de imputación elegida; partición train/test (70/30); tratamiento justificado de los outliers de S1; estandarización y codificación de variables categóricas.}
+\resp
+
+\subsection{Selección de variables informada por S1 y S2}
+\guia{Construyan tres modelos: (1) basado en correlaciones de S1 validadas en S2, (2) selección stepwise, (3) basado en AIC/BIC. Documenten variables, coeficientes y odds ratios de cada uno, explicando cómo S1 y S2 informaron la selección.}
+\resp
+
+\subsection{Evaluación de estabilidad mediante bootstrap}
+\guia{(30 pts) Apliquen bootstrap (como en S2) al mejor modelo logístico; construyan IC al 95\,\% para coeficientes y odds ratios; identifiquen parámetros inestables comparando con los IC tradicionales.}
+\resp
+
+\subsection{Diagnóstico de supuestos}
+\guia{VIF (multicolinealidad), linealidad en el logit cuando corresponda, observaciones influyentes y análisis de residuos.}
+\resp
+
+\subsection{Evaluación de desempeño predictivo}
+\guia{Para los tres modelos: matrices de confusión (train y test), accuracy, precision, recall, F1-score, curvas ROC y AUC. Seleccionen y justifiquen el modelo final.}
+\resp
+
+\section{Análisis comparativo del impacto de la imputación}
+\guia{(9 pts) Ajusten el modelo final con los tres datasets (eliminación, imputación simple, imputación por regresión); comparen tamaño muestral, coeficientes, IC, AUC y accuracy en test; analicen si la estrategia de imputación cambia las conclusiones y formulen recomendaciones.}
+\resp
+
+\section{Informe final integrado}
+\guia{(9 pts) Máximo 10 páginas: resumen ejecutivo, introducción, metodología integrada, resultados integrados, discusión y conclusiones, destacando explícitamente cómo cada fase (S1, S2, S3) informa a la siguiente.}
+\resp
+
+\section{Presentación del proyecto}
+\guia{(6 pts) 10 minutos (video o en vivo): problema, metodología integrada, principales resultados y conclusiones/recomendaciones finales, enfatizando la progresión S1 $\to$ S2 $\to$ S3.}
+\resp
+
+\section{Bibliografía (APA 7)}
+\guia{Referencias en formato APA 7.\textsuperscript{a} edición, citadas explícitamente en el texto.}
+\resp
+
+\begin{infobox}[Recordatorio]
+Si no se evidencia el uso efectivo de los resultados de S1 y S2 en las decisiones metodológicas de esta evaluación, \textbf{la calificación máxima no podrá alcanzarse}, independientemente de la calidad técnica del resto del trabajo.
+\end{infobox}
+\end{document}

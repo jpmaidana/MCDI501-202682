@@ -1,0 +1,150 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===================== Codificación y fuentes =====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ===================== Página y utilidades ========================
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+% ===================== Etiquetas en español (sin babel) ===========
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\refname}{Bibliografía}
+
+% ===================== Escala de grises (sin color) ================
+\definecolor{negro}{RGB}{0,0,0}
+\definecolor{gris}{RGB}{90,90,90}
+\definecolor{grisclaro}{RGB}{150,150,150}
+\definecolor{fillgray}{RGB}{175,175,175}
+
+% ===================== Hipervínculos (negro) =======================
+\hypersetup{colorlinks=true, linkcolor=negro, urlcolor=negro, citecolor=negro}
+
+% ===================== Estilo de títulos ===========================
+\titleformat{\section}{\large\bfseries\color{negro}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{negro}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.4em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.3em}
+
+% ===================== Pie de página ===============================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\footnotesize\color{gris}Magíster en Ciencia de Datos e Inteligencia Artificial}
+\fancyfoot[R]{\footnotesize\color{gris}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ===================== Comandos del docente ========================
+\newcommand{\guia}[1]{{\small\itshape\color{gris}#1}\par\vspace{0.15em}}
+\newcommand{\resp}{{\footnotesize\itshape\color{fillgray}[\,Desarrollen aquí\,]}\par\vspace{1.1em}}
+
+% Caja de información de la evaluación (escala de grises):
+\newtcolorbox{infobox}[1][Información de la evaluación]{colback=black!3,colframe=negro,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% Caja de conexión con evaluaciones previas (gris, sin color):
+\newtcolorbox{conexionbox}[1][Conexión con evaluaciones anteriores]{colback=black!6,colframe=gris,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% ===================== Datos del grupo (COMPLETAR) ==================
+\newcommand{\proyTitulo}{«título del proyecto»}
+\newcommand{\proyIntegrantes}{«nombres completos (3--4 integrantes)»}
+\newcommand{\proyDataset}{«dataset seleccionado»}
+\newcommand{\proyDocente}{«nombre del docente»}
+\newcommand{\proyFecha}{«dd/mm/aaaa»}
+\newcommand{\proyRepo}{\url{https://github.com/usuario/repositorio}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\thispagestyle{empty}
+\begin{center}
+\vspace*{1.0cm}
+\includegraphics[height=4.4cm]{logo_unab.png}\\[1.3cm]
+
+{\footnotesize\color{gris}\MakeUppercase{Magíster en Ciencia de Datos e Inteligencia Artificial}}\\[0.15cm]
+{\footnotesize\color{grisclaro}MCDI501: Estadística Computacional para la Toma de Decisiones}\\[2.0cm]
+
+{\Large\bfseries\color{negro} Evaluación Sumativa 2}\\[0.45cm]
+{\large\color{negro} Validación, Simulación y Métodos de Remuestreo}\\[1.0cm]
+
+{\small\itshape\color{gris} Informe técnico grupal \textperiodcentered\ 20\,\%}
+\end{center}
+
+\vspace{1.6cm}
+
+\begin{flushleft}
+\setlength{\extrarowheight}{5pt}
+\begin{tabular}{@{}>{\bfseries\color{negro}}l l@{}}
+Título del proyecto: & \proyTitulo \\
+Integrantes:         & \proyIntegrantes \\
+Dataset:             & \proyDataset \\
+Docente:             & \proyDocente \\
+Fecha:               & \proyFecha \\
+Repositorio GitHub:  & \proyRepo \\
+\end{tabular}
+\end{flushleft}
+
+\clearpage
+\pagenumbering{arabic}
+\begin{infobox}
+\textbf{Fase del proyecto:} Fase 3: Desarrollo del proyecto\\
+\textbf{Modalidad:} Grupal\qquad\textbf{Ponderación:} 20\,\% de la nota final\\
+\textbf{Entregables:} Informe PDF (máx.\ 7 págs.)\ \textperiodcentered\ Notebook \texttt{.ipynb}\ \textperiodcentered\ Repositorio GitHub (carpetas S1, S2 y archivo de resultados validados)\\
+\textbf{Resultado de aprendizaje (RA2):} implementar métodos computacionales de simulación y remuestreo para apoyar la toma de decisiones en escenarios complejos.\\
+\textbf{Indicadores:} ID2.1, ID2.2, ID2.3.\\
+\textbf{Prerrequisito:} Sumativa 1 completada (usarán sus resultados).
+\end{infobox}
+\begin{conexionbox}
+Esta evaluación \textbf{no es independiente}: todo el trabajo debe construirse explícitamente sobre los resultados de la Sumativa 1 (parámetros estimados, intervalos de confianza, pruebas de hipótesis y correlaciones). \textbf{Si no se utilizan resultados propios de S1, la evaluación no podrá alcanzar la calificación máxima.}
+\end{conexionbox}
+
+\vspace{0.5em}
+\tableofcontents
+\newpage
+
+\section{Validación de resultados de S1 mediante bootstrap}
+\guia{(18 pts) Para al menos 3 parámetros estimados en S1: bootstrap no paramétrico ($\geq$10.000 remuestras), IC por método percentil y BCa, comparación sistemática con el IC clásico y visualización de la distribución bootstrap. Analicen discrepancias y la confiabilidad de cada método según sus supuestos.}
+\resp
+
+\section{Validación de pruebas de hipótesis mediante permutación}
+\guia{(15 pts) Seleccionen al menos una prueba de S1; implementen un test de permutación ($\geq$10.000 permutaciones); comparen el valor $p$ de permutación con el paramétrico original y discutan la concordancia entre ambos enfoques.}
+\resp
+
+\section{Evaluación de estabilidad de correlaciones}
+\guia{(6 pts) Seleccionen 3 a 5 correlaciones relevantes de S1 y evalúen su estabilidad mediante IC bootstrap al 95\,\%, identificando correlaciones robustas e inestables.}
+\resp
+
+\section{Simulación Monte Carlo basada en parámetros de S1}
+\guia{(24 pts) Diseñen una simulación relevante para el problema, usando exclusivamente parámetros estimados en S1; implementen con $\geq$10.000 iteraciones, evalúen convergencia, calculen estadísticos relevantes e interpreten los escenarios simulados en relación con el fenómeno real.}
+\resp
+
+\section{Análisis de robustez}
+\guia{(15 pts) Evalúen la sensibilidad de los resultados de S1 frente a outliers y supuestos estadísticos (jackknife, bootstrap o simulaciones con distribuciones alternativas); distingan conclusiones confiables de aquellas que requieren cautela.}
+\resp
+
+\section{Preparación para la Sumativa 3}
+\guia{(9 pts) Documenten un reporte de resultados validados: parámetros robustos, correlaciones estables, observaciones influyentes identificadas y recomendaciones metodológicas para S3.}
+\resp
+
+\section{Bibliografía (APA 7)}
+\guia{Referencias en formato APA 7.\textsuperscript{a} edición, citadas explícitamente en el texto.}
+\resp
+
+\end{document}

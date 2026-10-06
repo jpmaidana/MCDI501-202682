@@ -1,0 +1,146 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===================== Codificación y fuentes =====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ===================== Página y utilidades ========================
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+% ===================== Etiquetas en español (sin babel) ===========
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\refname}{Bibliografía}
+
+% ===================== Escala de grises (sin color) ================
+\definecolor{negro}{RGB}{0,0,0}
+\definecolor{gris}{RGB}{90,90,90}
+\definecolor{grisclaro}{RGB}{150,150,150}
+\definecolor{fillgray}{RGB}{175,175,175}
+
+% ===================== Hipervínculos (negro) =======================
+\hypersetup{colorlinks=true, linkcolor=negro, urlcolor=negro, citecolor=negro}
+
+% ===================== Estilo de títulos ===========================
+\titleformat{\section}{\large\bfseries\color{negro}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{negro}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.4em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.3em}
+
+% ===================== Pie de página ===============================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\footnotesize\color{gris}Magíster en Ciencia de Datos e Inteligencia Artificial}
+\fancyfoot[R]{\footnotesize\color{gris}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ===================== Comandos del docente ========================
+\newcommand{\guia}[1]{{\small\itshape\color{gris}#1}\par\vspace{0.15em}}
+\newcommand{\resp}{{\footnotesize\itshape\color{fillgray}[\,Desarrollen aquí\,]}\par\vspace{1.1em}}
+
+% Caja de información de la evaluación (escala de grises):
+\newtcolorbox{infobox}[1][Información de la evaluación]{colback=black!3,colframe=negro,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% Caja de conexión con evaluaciones previas (gris, sin color):
+\newtcolorbox{conexionbox}[1][Conexión con evaluaciones anteriores]{colback=black!6,colframe=gris,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% ===================== Datos del grupo (COMPLETAR) ==================
+\newcommand{\proyTitulo}{«título del proyecto»}
+\newcommand{\proyIntegrantes}{«nombres completos (3--4 integrantes)»}
+\newcommand{\proyDataset}{«dataset seleccionado»}
+\newcommand{\proyDocente}{«nombre del docente»}
+\newcommand{\proyFecha}{«dd/mm/aaaa»}
+\newcommand{\proyRepo}{\url{https://github.com/usuario/repositorio}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\thispagestyle{empty}
+\begin{center}
+\vspace*{1.0cm}
+\includegraphics[height=4.4cm]{logo_unab.png}\\[1.3cm]
+
+{\footnotesize\color{gris}\MakeUppercase{Magíster en Ciencia de Datos e Inteligencia Artificial}}\\[0.15cm]
+{\footnotesize\color{grisclaro}MCDI501: Estadística Computacional para la Toma de Decisiones}\\[2.0cm]
+
+{\Large\bfseries\color{negro} Evaluación Formativa 1}\\[0.45cm]
+{\large\color{negro} Análisis Exploratorio e Inferencial (práctica)}\\[1.0cm]
+
+{\small\itshape\color{gris} Informe individual o grupal \textperiodcentered\ 0\,\% (formativa)}
+\end{center}
+
+\vspace{1.6cm}
+
+\begin{flushleft}
+\setlength{\extrarowheight}{5pt}
+\begin{tabular}{@{}>{\bfseries\color{negro}}l l@{}}
+Título del proyecto: & \proyTitulo \\
+Integrantes:         & \proyIntegrantes \\
+Dataset:             & \proyDataset \\
+Docente:             & \proyDocente \\
+Fecha:               & \proyFecha \\
+Repositorio GitHub:  & \proyRepo \\
+\end{tabular}
+\end{flushleft}
+
+\clearpage
+\pagenumbering{arabic}
+\begin{infobox}
+\textbf{Fase del proyecto:} Fase 2: Búsqueda y recopilación de información\\
+\textbf{Modalidad:} Grupal\qquad\textbf{Ponderación:} 0\,\% (formativa)\\
+\textbf{Entregable:} Informe en formato PDF, subido a Canvas\\
+\textbf{Resultado de aprendizaje (RA1):} aplicar conceptos fundamentales de probabilidad e inferencia estadística en la resolución de problemas de decisión bajo incertidumbre.\\
+\textbf{Indicadores:} ID1.2, ID1.3, ID1.4.
+\end{infobox}
+
+\vspace{0.5em}
+\tableofcontents
+\newpage
+
+\section{Introducción}
+\guia{Presenten brevemente el conjunto de datos definido por el equipo en la fase anterior del proyecto y el propósito de este informe de avance.}
+\resp
+
+\section{Aplicación de estadística descriptiva}
+\guia{(15 pts, ID1.2) Caractericen las variables del conjunto de datos mediante medidas de tendencia central, dispersión y representaciones gráficas adecuadas a cada tipo de variable.}
+\resp
+
+\section{Estimación puntual e intervalos de confianza}
+\guia{(15 pts, ID1.3) Utilicen métodos de estimación puntual e intervalos de confianza para determinar parámetros poblacionales relevantes del conjunto de datos, interpretando los resultados.}
+\resp
+
+\section{Aplicación de una prueba de hipótesis}
+\guia{(15 pts, ID1.4) Apliquen al menos una prueba de hipótesis básica, seleccionando el procedimiento adecuado según el tipo de variable y el nivel de significancia definido.}
+\resp
+
+\section{Documentación de procedimientos y resultados}
+\guia{(15 pts) Documenten de forma clara, ordenada y completa los procedimientos estadísticos aplicados y los resultados obtenidos, de manera que el análisis sea trazable.}
+\resp
+
+\section{Interpretación preliminar de resultados}
+\guia{(15 pts) Presenten interpretaciones preliminares claras y coherentes, vinculando los resultados obtenidos con el problema de decisión bajo incertidumbre.}
+\resp
+
+\section{Presentación formal del informe}
+\guia{(15 pts) Verifiquen redacción formal, uso adecuado de lenguaje estadístico y cumplimiento del formato solicitado antes de subir el PDF a Canvas.}
+\resp
+
+\end{document}

@@ -1,0 +1,147 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===================== Codificación y fuentes =====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ===================== Página y utilidades ========================
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+% ===================== Etiquetas en español (sin babel) ===========
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\refname}{Bibliografía}
+
+% ===================== Escala de grises (sin color) ================
+\definecolor{negro}{RGB}{0,0,0}
+\definecolor{gris}{RGB}{90,90,90}
+\definecolor{grisclaro}{RGB}{150,150,150}
+\definecolor{fillgray}{RGB}{175,175,175}
+
+% ===================== Hipervínculos (negro) =======================
+\hypersetup{colorlinks=true, linkcolor=negro, urlcolor=negro, citecolor=negro}
+
+% ===================== Estilo de títulos ===========================
+\titleformat{\section}{\large\bfseries\color{negro}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{negro}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.4em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.3em}
+
+% ===================== Pie de página ===============================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\footnotesize\color{gris}Magíster en Ciencia de Datos e Inteligencia Artificial}
+\fancyfoot[R]{\footnotesize\color{gris}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ===================== Comandos del docente ========================
+\newcommand{\guia}[1]{{\small\itshape\color{gris}#1}\par\vspace{0.15em}}
+\newcommand{\resp}{{\footnotesize\itshape\color{fillgray}[\,Desarrollen aquí\,]}\par\vspace{1.1em}}
+
+% Caja de información de la evaluación (escala de grises):
+\newtcolorbox{infobox}[1][Información de la evaluación]{colback=black!3,colframe=negro,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% Caja de conexión con evaluaciones previas (gris, sin color):
+\newtcolorbox{conexionbox}[1][Conexión con evaluaciones anteriores]{colback=black!6,colframe=gris,
+  fonttitle=\bfseries,coltitle=white,title={#1},boxrule=0.6pt,arc=1pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,breakable}
+
+% ===================== Datos del grupo (COMPLETAR) ==================
+\newcommand{\proyTitulo}{«título del proyecto»}
+\newcommand{\proyIntegrantes}{«nombres completos (3--4 integrantes)»}
+\newcommand{\proyDataset}{«dataset seleccionado»}
+\newcommand{\proyDocente}{«nombre del docente»}
+\newcommand{\proyFecha}{«dd/mm/aaaa»}
+\newcommand{\proyRepo}{\url{https://github.com/usuario/repositorio}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\thispagestyle{empty}
+\begin{center}
+\vspace*{1.0cm}
+\includegraphics[height=4.4cm]{logo_unab.png}\\[1.3cm]
+
+{\footnotesize\color{gris}\MakeUppercase{Magíster en Ciencia de Datos e Inteligencia Artificial}}\\[0.15cm]
+{\footnotesize\color{grisclaro}MCDI501: Estadística Computacional para la Toma de Decisiones}\\[2.0cm]
+
+{\Large\bfseries\color{negro} Evaluación Sumativa 1}\\[0.45cm]
+{\large\color{negro} Análisis Exploratorio e Inferencial}\\[1.0cm]
+
+{\small\itshape\color{gris} Informe técnico grupal \textperiodcentered\ 20\,\%}
+\end{center}
+
+\vspace{1.6cm}
+
+\begin{flushleft}
+\setlength{\extrarowheight}{5pt}
+\begin{tabular}{@{}>{\bfseries\color{negro}}l l@{}}
+Título del proyecto: & \proyTitulo \\
+Integrantes:         & \proyIntegrantes \\
+Dataset:             & \proyDataset \\
+Docente:             & \proyDocente \\
+Fecha:               & \proyFecha \\
+Repositorio GitHub:  & \proyRepo \\
+\end{tabular}
+\end{flushleft}
+
+\clearpage
+\pagenumbering{arabic}
+\begin{infobox}
+\textbf{Fase del proyecto:} Fase 2: Búsqueda y recopilación de información\\
+\textbf{Modalidad:} Grupal (3--4 integrantes)\qquad\textbf{Ponderación:} 20\,\% de la nota final\\
+\textbf{Entregables:} Informe PDF (máx.\ 8 págs., sin anexos) \ \textperiodcentered\ Notebook \texttt{.ipynb}\ \textperiodcentered\ Repositorio GitHub\\
+\textbf{Resultado de aprendizaje (RA1):} aplicar probabilidad e inferencia estadística en problemas de decisión bajo incertidumbre.\\
+\textbf{Indicadores:} ID1.2, ID1.3, ID1.4.\\
+\textbf{Recuerden:} los resultados de esta sumativa serán la entrada de S2 y S3.
+\end{infobox}
+
+\vspace{0.5em}
+\tableofcontents
+\newpage
+
+\section{Preparación y carga de datos}
+\guia{(15 pts) Carga del dataset seleccionado en Python; verificación de estructura y tipos de variables; identificación y documentación de faltantes, duplicados e inconsistencias; limpieza básica y reporte inicial de calidad de los datos.}
+\resp
+
+\section{Análisis exploratorio de datos}
+\guia{(15 pts) Estadística descriptiva de variables numéricas y categóricas con visualizaciones adecuadas; análisis bivariado (correlaciones y relaciones relevantes) con interpretación de cada hallazgo en el contexto del problema.}
+\resp
+
+\section{Estimación de parámetros}
+\guia{(15 pts) Para al menos 3 variables numéricas relevantes: estimación puntual e intervalos de confianza al 95\,\%; interpretación de los intervalos, justificación de los métodos utilizados y discusión de limitaciones.}
+\resp
+
+\section{Pruebas de hipótesis}
+\guia{(15 pts) Al menos 2 pruebas pertinentes al problema: formulación de $H_0$ y $H_1$, nivel de significancia justificado, verificación de supuestos, ejecución, interpretación de resultados e implicancias prácticas.}
+\resp
+
+\section{Informe de avance del proyecto}
+\guia{Introducción al problema, descripción de métodos aplicados, resumen de resultados, interpretaciones preliminares y próximos pasos del proyecto.}
+\resp
+
+\section{Notebook y repositorio GitHub}
+\guia{(6 pts, junto al informe) Notebook reproducible, documentado y coherente con el informe; repositorio GitHub enlazado en el informe.}
+\resp
+
+\section{Bibliografía (APA 7)}
+\guia{Referencias en formato APA 7.\textsuperscript{a} edición, citadas explícitamente en el texto.}
+\resp
+
+\end{document}
