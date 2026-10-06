@@ -8,8 +8,6 @@ Repositorio personal de estudio y trabajo del curso: apuntes ejecutables en Jupy
 diapositivas de apoyo, ejemplos de evaluaciones y plantillas de informe. El caso de
 aplicación transversal es el dataset **Give Me Some Credit** (riesgo crediticio).
 
-> Esta es la versión 2 del repositorio `MCDI501`, reorganizada para el periodo 2026-82.
-
 ---
 
 ## Contenido
